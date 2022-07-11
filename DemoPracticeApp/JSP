@@ -1,0 +1,61 @@
+JSP directive
+   @page
+	     <%@ page attribute="value" ... %>
+	     commonly used attributes
+	     language="Scripting language"
+	     extends="classname"
+	     import="importList"
+	     session="true|false"
+	     autoFlush="true|false"
+	     contentType="ctinfo"
+	     errorPage="error_url"
+	     isErrorPage="true|false"
+	     info="information"
+	     isELIgnored="true|false"
+	     isThreadSafe="true|false"
+	     
+	     @include
+@taglib
+	<%@ taglib uri="uri" prefix="fx" %>
+	<fx:dhiraj>
+	
+	---------------------------------------------------
+	
+	*Implict Object in JSP*
+	
+	BuiltIn Object (can be used in ScriptLet and Expression)
+		request (HttpServletRequest)
+		response (HttpServletResponse)
+		pageContext (PageContext)
+		out (JspWriter) ~ PrintWriter Object
+		session (HttpSession)
+		application (ServletContext)
+		conFig (ServletConfig)
+	-----------------------------------------------
+	
+	*JDBC steps*
+	1. import package(java.sql.*)
+	2. load and register driver
+	
+	for mySql:
+	Driver: com.mysql.jdbc.Driver
+	URL: jdbc:mysql://localhost:3306/root
+	username:root
+	password:
+	
+	<%
+		String url="jdbc:mysql://localhost:3306/root";
+		String userName="root";
+		String password="cdac";
+		String sql="select * from emp where empId=1";
+		
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection(url,userName,password);
+		ResultSet rs=st.executeQuery(sql);
+		rs.next();
+	%>
+	column1: <% rs.getString(1) %> <br/>
+	column2: <% rs.getString(2) %> <br/>
+	column3: <% rs.getString(3) %> 
+		
+	
